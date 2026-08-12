@@ -24,7 +24,7 @@ The examples show what each document should contain and the level of detail requ
 
 ## Document Sequence
 
-### 01. `01-overview.md` — Service Overview
+### 01. [`01-overview.md`](01-overview.en.md) — Service Overview
 
 Define why the service is being built, whom it serves, and what value it provides.
 
