@@ -1,0 +1,20 @@
+services:
+  git:
+    build: .
+    container_name: haetdachyeo-git
+    stdin_open: true
+    tty: true
+    command: ["tail", "-f", "/dev/null"]
+
+    volumes:
+      # 했다쳐 전체 프로젝트 디렉터리
+      - ../../:/workspace
+
+      # 했다쳐 전용 SSH private key
+      - ~/.ssh/haetdachyeo:/root/.ssh/id_ed25519:ro
+
+      # 했다쳐 전용 SSH 설정
+      - ./config:/root/.ssh/config:ro
+
+      # GitHub host key
+      - ./known_hosts:/root/.ssh/known_hosts:ro
