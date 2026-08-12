@@ -70,6 +70,8 @@ Implementation details that do not change the outcome, such as variable names or
 
 Depending on the nature and scale of the project, the following areas are designed to the level required.
 
+See the [Project Design Guide](guide/00-guide.en.md) for the document sequence and completion criteria.
+
 ```text
 README
 Requirements
