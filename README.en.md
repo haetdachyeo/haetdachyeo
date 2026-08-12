@@ -140,6 +140,40 @@ During the design phase, it may be used as a review tool to support the followin
 
 During the implementation phase, AI is an executor that translates the design finalized by the developer into code. It must not decide core matters absent from the documentation based on convention or guesswork. If AI must ask additional questions or make decisions that could change the outcome, the issue is not implementation capability; it is that the design is not yet complete.
 
+## Long-Term Goal
+
+The following is not part of the project's immediate scope. It is the long-term direction to pursue once enough design projects have accumulated.
+
+Haetdachyeo's ultimate goal is to extract reusable criteria from the design decisions accumulated across projects and establish **standards for AI development**. Rather than designing every new project from scratch, it should become possible to assemble approaches reviewed and finalized in previous projects according to the current project's conditions.
+
+To support this, Haetdachyeo will accumulate three kinds of assets.
+
+1. **Design templates**: Reusable design units for areas such as APIs, authentication, real-time communication, data storage, deployment, and operations
+2. **Decision rules**: Criteria that define the conditions under which each template should be selected or excluded
+3. **Composition rules**: Criteria that define dependencies, compatibility, conflicts, and integration among selected templates
+
+The most important of these assets is the **decision rules**. An appropriate design can be selected only by considering not just the required features, but also traffic, budget, security level, clients, operational capability, and quality requirements.
+
+Therefore, Haetdachyeo does not fix a single technology to a single feature with rules such as “a blog uses REST” or “a mobile app uses JWT.” The same feature may require a different choice depending on the project's conditions and constraints. Each template must define its applicable conditions, exclusion conditions, alternatives, and trade-offs.
+
+In the long term, Haetdachyeo aims for the following flow.
+
+```text
+Service features and constraints
+        ↓
+Find applicable design templates and decision rules
+        ↓
+Analyze compatibility, cost, and trade-offs
+        ↓
+Assemble a design draft for the project
+        ↓
+Developer or user review and confirmation
+        ↓
+AI implementation from the finalized project specification
+```
+
+AI may propose a design draft based on the accumulated standards, but that draft is not automatically considered suitable for a production service. Before implementation, a developer or user must review and confirm that it fits the current project's requirements and constraints.
+
 ## GitHub Structure
 
 Each design project is managed as an independent Repository under the GitHub Organization `haetdachyeo`.
