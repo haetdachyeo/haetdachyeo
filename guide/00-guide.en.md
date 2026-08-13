@@ -38,7 +38,7 @@ Required content:
 
 Completion result: The project's reason for existing and the criteria for determining its success are clear.
 
-### 02. `02-scope.md` — Scope and Priorities
+### 02. [`02-scope.md`](02-scope.en.md) — Scope and Priorities
 
 Distinguish what will and will not be built in this project.
 
