@@ -3,6 +3,7 @@
 [한국어](01-overview.md) | [English](01-overview.en.md) | [日本語](01-overview.ja.md)
 
 ← Previous: [00. Project Design Guide](00-guide.en.md)
+Next: [02. Blog Service Scope and Priorities](02-scope.en.md) →
 
 ## Problem and Background
 
