@@ -52,7 +52,7 @@ Required content:
 
 Completion result: The implementation scope does not expand unnecessarily, and what must be omitted is also clear.
 
-### 03. `03-requirements.md` — Requirements
+### 03. [`03-requirements.en.md`](03-requirements.en.md) — Requirements
 
 Define the functionality and quality the service must provide in verifiable statements.
 
