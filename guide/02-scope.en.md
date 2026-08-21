@@ -3,6 +3,7 @@
 [한국어](02-scope.md) | [English](02-scope.en.md) | [日本語](02-scope.ja.md)
 
 ← Previous: [01. Blog Service Overview](01-overview.en.md)
+Next: [03. Blog Service Requirements](03-requirements.en.md) →
 
 ## Minimum Scope for the First Release
 
@@ -12,14 +13,15 @@ All first-release items below are mandatory, not optional.
 
 - Sign-up
 - Sign-in and sign-out
-- Creating, modifying, and deleting a Member's own Posts
+- Creating Posts and modifying or permanently deleting the Member's own existing public Posts
 - Viewing public Posts by Members and Visitors
 - Preventing Members from modifying or deleting other Members' Posts
 
 ## In Scope
 
 - Basic user flows required for Member account creation and current Member identification
-- Creating, modifying, and deleting Posts owned by the Member
+- Creating Posts and modifying or permanently deleting the Member's own existing public Posts
+- Deletion of an existing public Post owned by the Member is permanent; after deletion, no one can view, modify, restore, or re-delete it
 - Viewing public Posts
 - Limiting the Posts a Member can manage to those they authored
 
@@ -65,4 +67,4 @@ No external identity provider, external system, or external organization has bee
 
 ## Rationale for the Scope Decision
 
-Only the capabilities needed to deliver the core value established in Stage 01 and to enforce Post ownership are included in the first release, so that the scope does not expand to capabilities whose subsequent requirements and designs have not been confirmed.
+The first release is limited to the capabilities needed to deliver the core value established in Stage 01 and enforce Post ownership. Post deletion is permanent so that recovery and retention scope is not added, and the scope does not otherwise expand to capabilities whose subsequent requirements and designs have not been confirmed.
