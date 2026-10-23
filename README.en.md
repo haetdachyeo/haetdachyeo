@@ -70,7 +70,13 @@ Implementation details that do not change the outcome, such as variable names or
 
 Depending on the nature and scale of the project, the following areas are designed to the level required.
 
-See the [Project Design Guide](guide/00-guide.en.md) for the document sequence and completion criteria.
+Writing templates and blog service examples are available in the [Design Workflow](guide/workflow/). The following stages have been written so far.
+
+1. [Purpose](guide/workflow/01-purpose.en.md): Project purpose, background, target users, expected usage scale, user value, and success criteria
+2. [Scope](guide/workflow/02-scope.en.md): Included features, excluded features, and scope boundaries
+3. [Technology and Architecture](guide/workflow/03-architecture.en.md): Design direction, system structure, technology choices, and guidance for detailed design documents
+
+Files named `*.example.md` are templates that guide users through what to consider and write. The regular documents for the same stages are filled-in blog service examples. The architecture overview summarizes the overall structure, with detailed designs to be separated into a `03-architecture/` folder.
 
 ```text
 README
@@ -141,6 +147,22 @@ During the design phase, it may be used as a review tool to support the followin
 - Structuring documents and improving their wording
 
 During the implementation phase, AI is an executor that translates the design finalized by the developer into code. It must not decide core matters absent from the documentation based on convention or guesswork. If AI must ask additional questions or make decisions that could change the outcome, the issue is not implementation capability; it is that the design is not yet complete.
+
+## Synchronizing Specifications and Implementation
+
+**Reading the complete set of current specifications must be enough to understand the project's entire specification.** Specifications are not documents written once before implementation and then left behind. They remain the up-to-date reference for intended behavior throughout the project's lifetime.
+
+When changing a feature or behavior, **update the existing specifications directly** rather than adding a separate change specification. For example, when modifying an existing API, update its inputs, outputs, errors, and related rules so that its specification describes the complete behavior after the change. Update other affected specifications as well to keep the documents consistent.
+
+When implementation is undertaken, AI synchronizes the specifications and code in the following order.
+
+1. Identify changes to the specifications and differences between the specifications and the current implementation.
+2. Update the affected code and tests to match the latest specifications.
+3. Verify that the implementation matches the specifications through actual behavior and relevant tests.
+
+If the specifications contain omissions or contradictions, AI must not decide the behavior on its own. Resolve the specification first, then reflect it in the implementation. Rather than adjusting specifications to match the code, **adjust code and tests to match the finalized specifications.**
+
+Git manages the change history. The current specifications themselves must describe the entire specification, so understanding the current behavior does not require piecing together past change documents or history.
 
 ## Long-Term Goal
 
