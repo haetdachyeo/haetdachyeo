@@ -4,79 +4,72 @@
 
 > Let's say it's implemented.
 
-Haetdachyeo is not a project for implementing applications.
+Haetdachyeo is a GitHub Organization that **finalizes requirements and designs until they determine the implementation outcome**. Each design project has its own Repository.
 
-It is a GitHub Organization that **completes the requirements and designs of multiple projects to the point where their implementation outcomes are determined**, then manages each one as a separate GitHub Repository.
+The goal: AI or developers can implement from documentation alone, without further questions or core design work. Different implementers should produce equivalent features, contracts, domain rules, data, architecture, and operational characteristics.
 
-Providing the project documentation alone to an AI or developer should be enough for implementation to begin without further questions or additional core design work. The goal is for any implementer to converge on a materially equivalent outcome within predefined boundaries for functionality, external contracts, domain rules, data models, architecture, and operational characteristics.
-
-Once that state has been reached, actual implementation becomes repetitive work that translates an already-decided design into code rather than requiring new decisions. Haetdachyeo does not omit implementation because implementation is impossible; **it intentionally omits implementation because the design has already determined the implementation outcome sufficiently.**
+Application implementation is excluded. **Design determines the outcome; implementation translates the finalized design into code.**
 
 ## Why It Exists
 
-Advances in AI have made implementing an application easier than before when requirements and appropriate context are available. However, the following decisions that determine project quality remain the developer's responsibility.
+Even as AI implementation becomes easier, product and system decisions remain the developer's responsibility.
 
-- What to build and what not to build
-- How to divide the boundaries of the domain and the system
-- How to model the data
-- How to define external interfaces and state transitions
-- Which architecture, infrastructure, and technologies to choose
-- What level of extensibility the current requirements need
-- Which alternatives are available and what trade-offs each entails
+- Included and excluded scope
+- Domain and system boundaries
+- Data models, state transitions, and external contracts
+- Architecture, infrastructure, technologies, and extensibility
+- Alternatives and trade-offs
 
-Haetdachyeo focuses on these decisions that must be made before writing code. Its purpose is not to produce a large volume of documentation, but to **finalize in documentation the decisions required for implementation**.
+The purpose is **finalizing implementation decisions**, not producing more documentation.
 
 ## Meaning of the Name
 
-**Haetdachyeo** means **“Let's say it's implemented.”**
+**Haetdachyeo = “Let's say it's implemented.”**
 
-If the requirements and design are specific enough that AI does not need to decide core matters on its own, and different implementers can produce materially equivalent outcomes, we consider the following to be true.
-
-> At this point, let's say it's implemented.
+When a design enables equivalent implementations without further core decisions, we consider it implemented.
 
 ## Goal
 
-The intended final state of each project is as follows.
+> AI or developers can implement from project documentation alone, without further questions or core design work.
 
-> A state in which an AI or developer can implement the project from its documentation alone, without additional questions or core design work
+Elements that must be equivalent:
 
-An equivalent outcome does not mean source code that is identical character for character. It means equivalence in the elements that determine product and system behavior, including the following.
-
-- Features provided and items outside the scope
-- User-visible behavior and outcomes
-- Normal, exceptional, and failure cases, as well as boundary conditions
+- Features, exclusions, user behavior, and outcomes
+- Normal, exceptional, failure, and boundary conditions
 - Domain rules and state transitions
 - API and external system contracts
-- Data structures and persistence rules
+- Data structures and persistence
 - System composition and technology choices
-- Security, performance, availability, and operational criteria
+- Security, performance, availability, and operations
 - Testing and acceptance criteria
 
-Implementation details that do not change the outcome, such as variable names or code organization, may differ. However, decisions that affect the outcome are not left to AI discretion.
+Source code need not match character for character. Variable names and code organization may differ if outcomes stay unchanged; outcome-changing decisions must not be left to AI discretion.
 
 ## Core Principles
 
-- **Do not implement application code.**
-- **Finalize requirements before design and technology choices.**
-- **Specify not only the scope, but also what is outside the scope.**
-- **Define exceptions, failures, and boundary conditions alongside normal flows.**
-- **Leave no core design decisions for AI to infer.**
-- **Prioritize simplicity and avoid overengineering.**
-- **Provide the extensibility required by confirmed requirements and reasonably foreseeable changes.**
-- **Record the rationale, alternatives, and trade-offs for important choices.**
-- **Assess completeness by implementability, not by the volume of documentation.**
+- Exclude application implementation.
+- Finalize requirements before design and technology choices.
+- State included and excluded scope.
+- Define normal, exceptional, failure, and boundary conditions.
+- Leave no core design decisions for AI to infer.
+- Prioritize simplicity; avoid overengineering.
+- Provide extensibility for confirmed requirements and reasonably foreseeable changes.
+- Record rationale, alternatives, and trade-offs.
+- Judge completeness by implementability, not document volume.
 
 ## What Each Project Designs
 
-Depending on the nature and scale of the project, the following areas are designed to the level required.
+[Design Workflow](guide/workflow/): writing templates and blog service examples.
 
-Writing templates and blog service examples are available in the [Design Workflow](guide/workflow/). The following stages have been written so far.
+1. [Purpose](guide/workflow/01-purpose.en.md): Purpose, background, users, scale, value, and success criteria
+2. [Scope](guide/workflow/02-scope.en.md): Inclusions, exclusions, and feature boundaries
+3. [Technology and Architecture](guide/workflow/03-architecture.en.md): Design direction, structure, technologies, and detailed design guidance
 
-1. [Purpose](guide/workflow/01-purpose.en.md): Project purpose, background, target users, expected usage scale, user value, and success criteria
-2. [Scope](guide/workflow/02-scope.en.md): Included features, excluded features, and scope boundaries
-3. [Technology and Architecture](guide/workflow/03-architecture.en.md): Design direction, system structure, technology choices, and guidance for detailed design documents
+- `*.example.md`: Templates for authors to consider and fill in.
+- Regular documents for the same stages: Filled-in blog service examples.
+- Architecture overview: Overall summary. Detailed designs: `03-architecture/`.
 
-Files named `*.example.md` are templates that guide users through what to consider and write. The regular documents for the same stages are filled-in blog service examples. The architecture overview summarizes the overall structure, with detailed designs to be separated into a `03-architecture/` folder.
+Design the areas needed for each project's nature and scale.
 
 ```text
 README
@@ -93,9 +86,9 @@ ADR
 AI Instructions
 ```
 
-Projects do not fill every area as a formality or force all content into a single Markdown file. As the content grows, documents are divided by domain or concern.
+Neither filling every area as a formality nor using a single Markdown file is required. Split by domain or concern according to scale, complexity, and information needs.
 
-For example, API documentation may be organized as follows.
+Example API document structure:
 
 ```text
 api/
@@ -106,81 +99,71 @@ api/
 └── projects.md
 ```
 
-The document structure and level of detail are determined by the project's scale, complexity, and the amount of information required for implementation.
-
 ## Recording Design Decisions
 
-Important decisions record more than the final choice. Whenever possible, they include the following.
+Record for important decisions:
 
-1. **Problem**: What problem must be solved?
-2. **Constraints**: What conditions limit the choice?
-3. **Choice**: What was chosen?
-4. **Rationale**: Why is this choice appropriate for the current requirements?
-5. **Alternatives**: Which options were considered?
-6. **Trade-offs**: What is gained and what is given up?
+| Item | Content |
+| --- | --- |
+| Problem | What needs solving |
+| Constraints | Conditions limiting the choice |
+| Choice | Selected approach |
+| Rationale | Why it fits current requirements |
+| Alternatives | Options considered and reasons for rejection |
+| Trade-offs | Gains, sacrifices, and costs |
 
-The conclusion “Use PostgreSQL” is not sufficient on its own. The documentation must explain why PostgreSQL was chosen given the current requirements and constraints, why other alternatives were not chosen, and what costs the decision entails.
+Example: Record not just the PostgreSQL choice, but its suitability, rejected alternatives, and costs.
 
 ## Level of Design
 
-Haetdachyeo is not a project that designs every possible future in advance.
+Complete decisions needed for current implementation without obstructing reasonable future changes.
 
-It completes the decisions required to implement the current requirements while avoiding structures that would make reasonable future changes excessively difficult. Extensibility is evaluated not against vague possibilities, but on the following grounds.
+Base extensibility on:
 
-- Currently confirmed requirements
+- Confirmed requirements
 - Expected usage and quality criteria
-- Already identified follow-up requirements
-- Areas that are likely to change and costly to modify
+- Identified follow-up requirements
+- Likely, costly changes
 
-Unjustified abstractions and generalizations are not added.
+No exhaustive future planning or unjustified abstractions and generalization.
 
 ## Role of AI
 
-AI is not the entity that makes a project's major design decisions.
+| Phase | Role |
+| --- | --- |
+| Design | Find omissions and ambiguity; research alternatives; analyze pros, cons, and trade-offs; check contradictions; improve document structure and wording |
+| Implementation | Translate the developer's finalized design into code |
 
-During the design phase, it may be used as a review tool to support the following.
-
-- Identifying missing requirements and ambiguous wording
-- Researching design alternatives
-- Analyzing advantages, disadvantages, and trade-offs
-- Checking for contradictions and omissions across documents
-- Structuring documents and improving their wording
-
-During the implementation phase, AI is an executor that translates the design finalized by the developer into code. It must not decide core matters absent from the documentation based on convention or guesswork. If AI must ask additional questions or make decisions that could change the outcome, the issue is not implementation capability; it is that the design is not yet complete.
+AI must not replace core design decisions or infer undocumented core behavior. Further questions or outcome-changing decisions mean the design is incomplete.
 
 ## Synchronizing Specifications and Implementation
 
-**Reading the complete set of current specifications must be enough to understand the project's entire specification.** Specifications are not documents written once before implementation and then left behind. They remain the up-to-date reference for intended behavior throughout the project's lifetime.
+**Current specifications alone must describe the entire project specification.** Keep them the up-to-date reference for intended behavior throughout the project's lifetime.
 
-When changing a feature or behavior, **update the existing specifications directly** rather than adding a separate change specification. For example, when modifying an existing API, update its inputs, outputs, errors, and related rules so that its specification describes the complete behavior after the change. Update other affected specifications as well to keep the documents consistent.
+- Changes: **Update existing specifications directly**, not separate change specifications.
+- API changes: Update inputs, outputs, errors, and rules to describe the complete changed behavior.
+- Impact: Update related specifications and maintain consistency.
+- History: Managed by Git. Current behavior must be clear without assembling past change documents or history.
 
-When implementation is undertaken, AI synchronizes the specifications and code in the following order.
+AI synchronization order:
 
-1. Identify changes to the specifications and differences between the specifications and the current implementation.
-2. Update the affected code and tests to match the latest specifications.
-3. Verify that the implementation matches the specifications through actual behavior and relevant tests.
+1. Identify specification changes and differences from the current implementation.
+2. Align affected code and tests with the latest specifications.
+3. Verify alignment through actual behavior and relevant tests.
 
-If the specifications contain omissions or contradictions, AI must not decide the behavior on its own. Resolve the specification first, then reflect it in the implementation. Rather than adjusting specifications to match the code, **adjust code and tests to match the finalized specifications.**
-
-Git manages the change history. The current specifications themselves must describe the entire specification, so understanding the current behavior does not require piecing together past change documents or history.
+Resolve omissions and contradictions in the specifications before implementation. **Align code and tests with finalized specifications, not specifications with code.**
 
 ## Long-Term Goal
 
-The following is not part of the project's immediate scope. It is the long-term direction to pursue once enough design projects have accumulated.
+Build **standards for AI development** once enough design projects accumulate. This is not immediate scope. Reuse reviewed, finalized approaches according to project conditions.
 
-Haetdachyeo's ultimate goal is to extract reusable criteria from the design decisions accumulated across projects and establish **standards for AI development**. Rather than designing every new project from scratch, it should become possible to assemble approaches reviewed and finalized in previous projects according to the current project's conditions.
+| Asset | Content |
+| --- | --- |
+| Design templates | Reusable units for APIs, authentication, real-time communication, storage, deployment, and operations |
+| Decision rules | Conditions for selecting or excluding templates |
+| Composition rules | Dependencies, compatibility, conflicts, and integration among templates |
 
-To support this, Haetdachyeo will accumulate three kinds of assets.
-
-1. **Design templates**: Reusable design units for areas such as APIs, authentication, real-time communication, data storage, deployment, and operations
-2. **Decision rules**: Criteria that define the conditions under which each template should be selected or excluded
-3. **Composition rules**: Criteria that define dependencies, compatibility, conflicts, and integration among selected templates
-
-The most important of these assets is the **decision rules**. An appropriate design can be selected only by considering not just the required features, but also traffic, budget, security level, clients, operational capability, and quality requirements.
-
-Therefore, Haetdachyeo does not fix a single technology to a single feature with rules such as “a blog uses REST” or “a mobile app uses JWT.” The same feature may require a different choice depending on the project's conditions and constraints. Each template must define its applicable conditions, exclusion conditions, alternatives, and trade-offs.
-
-In the long term, Haetdachyeo aims for the following flow.
+**Decision rules** are the core asset. Consider features, traffic, budget, security, clients, operational capability, and quality together. Avoid fixed rules such as “blog = REST” or “mobile = JWT”; record each template's applicable and exclusion conditions, alternatives, and trade-offs.
 
 ```text
 Service features and constraints
@@ -196,11 +179,11 @@ Developer or user review and confirmation
 AI implementation from the finalized project specification
 ```
 
-AI may propose a design draft based on the accumulated standards, but that draft is not automatically considered suitable for a production service. Before implementation, a developer or user must review and confirm that it fits the current project's requirements and constraints.
+An AI draft does not guarantee production suitability. Before implementation, a developer or user must review and confirm its fit for current requirements and constraints.
 
 ## GitHub Structure
 
-Each design project is managed as an independent Repository under the GitHub Organization `haetdachyeo`.
+Each design project has an independent Repository under the GitHub Organization `haetdachyeo`.
 
 ```text
 haetdachyeo/
@@ -211,37 +194,28 @@ haetdachyeo/
 └── ...
 ```
 
-Each Repository is an independent design project.
-
 ### `haetdachyeo/haetdachyeo`
 
-This Repository is not an individual project, but the main Repository that manages standards for the entire Organization.
+The main Repository manages Organization standards, not an individual design project.
 
-- The purpose and philosophy of Haetdachyeo
-- Project principles
-- Required design areas
-- Documentation standards
-- Project completion criteria
-- Project Template
-- Standards for using AI
+- Purpose, philosophy, and project principles
+- Required design areas, writing standards, and completion criteria
+- Project templates and AI usage standards
 
 ## Completion Criteria
 
-There is one core criterion for project completion.
-
 > Can implementation begin without additional questions or core design work?
 
-If an AI or developer must ask any of the following questions again, the design is considered insufficient.
+Documents must answer:
 
-- What must be built?
-- What must not be built?
-- How should users and the system behave in each situation?
-- How should errors and boundary conditions be handled?
-- How is the system divided by structure and responsibility?
-- Under what rules is data stored and changed?
-- What are the external interfaces, and which contracts do they follow?
-- Where and how is the system deployed and operated?
-- Which technologies are used, and why were they chosen?
-- How is the implementation verified against the requirements?
+- Included and excluded scope
+- User and system behavior in each situation
+- Error and boundary handling
+- System structure and responsibilities
+- Data storage and change rules
+- External interfaces and contracts
+- Deployment and operations
+- Technology choices and rationale
+- Verification against requirements
 
-The **Haetdachyeo completion state** is reached when the project documentation provides consistent and verifiable answers to these questions, leaving no core design discretion to the implementer.
+**Complete** means consistent, verifiable answers with no core design discretion left to the implementer.
