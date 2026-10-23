@@ -54,7 +54,10 @@ Use server-managed sessions for login. The client sends a session identifier in 
 
 ## Detailed Design Documents
 
-Detailed designs will be separated into the `03-architecture/` folder. Only this overview document is being written at this stage.
+Detailed designs are organized by topic in the `03-architecture/` folder. Start with design assumptions and technology choices, then proceed to the detailed designs for individual topics.
+
+- [Blog Service Design Assumptions and Technology Choices](03-architecture/01-design-decisions.en.md): Usage and operational conditions, rationale for technology and structural choices, verification, and criteria for reconsidering decisions.
+- [Design Assumptions and Technology Choices Template (Korean)](03-architecture/01-design-decisions.example.md): Expected usage, constraints and quality targets, selection rationale, alternatives, trade-offs, verification, and criteria for reconsidering decisions.
 
 The detailed design will cover the following topics.
 
