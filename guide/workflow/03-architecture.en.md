@@ -2,7 +2,7 @@
 
 ## Design Direction
 
-Blog example proposal: **modular monolith**, 1 application and 1 relational database. Separate account and post modules; deploy as a single program.
+Blog example proposal: **modular monolith**, 1 application and 1 relational database. Separate modules by feature; deploy as a single program.
 
 | Item | Assumption or target |
 | --- | --- |
@@ -10,7 +10,7 @@ Blog example proposal: **modular monolith**, 1 application and 1 relational data
 | Performance verification | 100 concurrent users; successful requests per action: p95 ≤ 2 seconds |
 | Monthly availability | ≥ 99.5% per action |
 | Operations | Single region; no separately deployed and managed services |
-| Change visibility | Reads reflect completed post creation, editing, and deletion |
+| Change visibility | Reads started after a successful change response reflect the change |
 
 Keep deployment and request handling simple. No separate cache, message broker, or search server.
 
@@ -30,12 +30,13 @@ PostgreSQL
 
 | Component | Responsibility |
 | --- | --- |
-| Client | Request registration, login, and post creation, retrieval, editing, and deletion; display results. Screens and client technologies selected separately |
-| Application | HTTPS handling, input validation, member identification, permission checks, account and post management, and responses |
-| PostgreSQL | Authoritative store for members, sessions, and posts. Same database for reads and writes |
+| Client | Generate requests and display results. Screens and client technologies selected separately |
+| Application | HTTPS handling, input validation, authentication, permission checks, business operations, and responses |
+| PostgreSQL | Authoritative store for service data. Same database for reads and writes |
 
-Internal responsibilities: HTTP requests/responses / accounts/authentication / post management / data access.
-Accounts/authentication identifies the current member; post management applies ownership rules for creation, editing, and deletion.
+Internal responsibilities: Requests/responses / business operations / data access / technical integrations.
+The responsible Service owns each feature's business rules. Concrete feature/API/domain lists belong in feature specifications.
+Internal design: Feature separation with Controller, Service, and Repository roles. Controller/Router/Middleware handles HTTP; wire Service storage contracts to concrete implementations at the application entry point.
 
 - **Writes**: Return success after changes complete. Define transaction boundaries to prevent partial changes on failure.
 - **Public updates**: No deferral to separate asynchronous tasks.
@@ -48,22 +49,25 @@ Accounts/authentication identifies the current member; post management applies o
 | --- | --- | --- |
 | Server language | Go 1.27.3 | Blog implementation |
 | HTTP handling | Go 1.27.3 standard `net/http` | HTTPS handling and API responses |
-| Database | PostgreSQL 18.6 | Persistent members, sessions, and posts |
+| Database | PostgreSQL 18.6 | Persistent service data |
 | Host operating system | Linux | Docker host |
 | Server runtime | Docker | Separate application and database containers |
 
 - **HTTP**: Standard functionality; no separate web framework.
-- **Storage**: Single relational database for account uniqueness, post ownership, and change integrity.
+- **Storage**: Single relational database for uniqueness, referential constraints, and change integrity.
 - **Login**: Server sessions. Cookie carries the identifier; check session validity and member identity in PostgreSQL.
 
 Details to define: session lifetime, cookie security, password protection, database access library, and specific runtime versions.
 
 ## Detailed Design Documents
 
-Location: `03-architecture/`. Reading order: assumptions and technology choices → topic-specific detailed designs.
+Location: `03-architecture/`. Reading order: assumptions and technology choices → internal design → subsequent topic-specific detailed designs.
 
 - [Design Assumptions and Technology Choices](03-architecture/01-design-decisions.en.md): Usage and operational conditions, rationale, verification, and reconsideration criteria.
 - [Writing Template (Korean)](03-architecture/01-design-decisions.example.md): Usage assumptions, constraints, quality, rationale, alternatives, trade-offs, verification, and reconsideration.
+- [Internal Design](03-architecture/02-internal-design.en.md): Choices in headings, rationale immediately below, common roles, dependency principles, and folder patterns.
+- [Internal Design Template (Korean)](03-architecture/02-internal-design.example.md): Fixed fields and order; describe common roles and placement principles rather than concrete feature lists.
+- [Feature Behavior Rules](02-scope.en.md#feature-behavior-rules): Business specifications updated with API/domain changes.
 
 Detailed design topics:
 
